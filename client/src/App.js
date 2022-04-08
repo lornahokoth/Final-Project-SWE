@@ -14,6 +14,7 @@ function App() {
       }
     )
   }, [])
+
   return (
     <div>
       <header
@@ -31,7 +32,6 @@ function App() {
         }}
       >
         <Link to="/home">Home</Link> |{" "}
-        <Link to="/search">Search</Link> |{" "}
         <Link to="/mylist">My List</Link> |{" "}
         <Link to="/profile">Profile</Link>
       </nav>
