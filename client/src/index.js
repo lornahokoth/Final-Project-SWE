@@ -1,12 +1,25 @@
 import React from 'react';
+import { BrowserRouter, Routes, Route, } from 'react-router-dom';
 import ReactDOM from 'react-dom';
+import Search from "./components/search";
+import Home from "./components/home";
+import MyList from "./components/mylist";
+import Profile from "./components/profile";
 
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<App />} />
+        <Route path="home" element={<Home />} />
+        <Route path="search" element={<Search />} />
+        <Route path="mylist" element={<MyList />} />
+        <Route path="profile" element={<Profile />} />
+      </Routes>
+    </BrowserRouter>
   </React.StrictMode>,
   document.getElementById('root')
 );
