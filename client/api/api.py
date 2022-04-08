@@ -8,17 +8,18 @@ app = Flask(__name__)
 # API Route
 @app.route("/endpoint")
 def functionname():
-    movie_results = search_movies("narnia")
-    print(movie_results)
     # do stuff
-    # return movie_results
+    return {"names": ["Name1", "Name2", "Name3"]}
 
 
-# @app.route("/query", methods=["POST"])
-# def query():
-#     data = flask.request.json()
-#     return data
-functionname()
+@app.route("/search", methods=["POST"])
+def get_search():
+    data = flask.request.get_json()
+    query = data["query"]
+    movie_results = search_movies(query)
+
+    return movie_results
+
 
 if __name__ == "__main__":
     app.run(debug=True)
