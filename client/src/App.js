@@ -1,15 +1,22 @@
 import React, { useState, useEffect } from 'react'
-import { BrowserRouter, Link, Route, Switch, NavLink } from 'react-router-dom'
+import { Link } from "react-router-dom";
 import { IoIosSearch } from "react-icons/io";
 import Login from './components/Login';
-import Home from './components/home';
 
 function App() {
     const [data, setData] = useState({})
+    const [data1, setData1] = useState({})
     const [search, setSearch] = useState("");
 
     useEffect(() => {
-
+        // fetch("/localhost:3000/endpoint").then(
+        //     res => res.json()
+        // ).then(
+        //     data => {
+        //         setData(data)
+        //         console.log(data)
+        //     }
+        // )
     }, [])
 
     function handleChange(e) {
@@ -20,15 +27,32 @@ function App() {
     function sendQuery() {
         console.log(search)
         var postData = { query: search }
-        fetch('/search', {
+        Promise.all([fetch('/search', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
             },
             body: JSON.stringify(postData),
+        }),
+        fetch('/search1', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(postData),
+        }),
+        fetch('/search2', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(postData),
+        })
+        ]).then(function (responses) {
+            return Promise.all(responses.map(function (response) {
+                return response.json()
+            }));
         }).then(
-            res => res.json()
-        ).then(
             data => {
                 setData(data)
                 console.log(data)
@@ -45,7 +69,6 @@ function App() {
             >
                 <h1>PersonalPix</h1>
             </header>
-
             <nav id="navbar"
                 style={{
                     color: '#9966ff',
@@ -56,15 +79,11 @@ function App() {
                 <Link to="/home">Home</Link> |{" "}
                 <Link to="/mylist">My List</Link> |{" "}
                 <Link to="/profile">Profile</Link>
-
-                <NavLink to= "/home">Home</NavLink>
-                
                 <input type="text" placeholder="Search" onChange={handleChange}></input>
                 <button type="button" onClick={() => sendQuery()}><IoIosSearch /></button>
 
             </nav>
             <Login/>
-                
             {(typeof data.moviename === 'undefined') ? (
                 <p>Loading...</p>
             ) : (
@@ -72,7 +91,6 @@ function App() {
                     <p key={i}>{nam}</p>
                 ))
             )}
-            
         </div>
     )
 }
