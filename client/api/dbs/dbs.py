@@ -44,7 +44,7 @@ class Users(db.Model):
         """Returns the username for a given user_id"""
         user = Users.query.filter_by(id=user_id).first()
         if not user:
-            return "annonymous"
+            return "anonymous"
         else:
             return user.username
 
