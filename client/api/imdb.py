@@ -7,7 +7,7 @@ from dotenv import find_dotenv, load_dotenv
 load_dotenv(find_dotenv())
 
 BASE_URL = "https://imdb-api.com/en/API/SearchMovie"
-API_KEY = os.getenv("IMDB_KEY")
+IMDB_KEY = os.getenv("IMDB_KEY")
 
 
 def search_movies(query):
@@ -15,11 +15,11 @@ def search_movies(query):
 
     query_params = {
         "lang": "en",
-        "apiKey": API_KEY,
+        "apiKey": IMDB_KEY,
         "expression": query,
     }
     # Creating full url to send requests to
-    full_url = BASE_URL + "/" + API_KEY + "/" + query
+    full_url = BASE_URL + "/" + IMDB_KEY + "/" + query
 
     response = requests.get(full_url, params=query_params)
     data = response.json()
