@@ -8,16 +8,18 @@ import Profile from "./components/profile";
 
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import Login from './components/Login';
 
 ReactDOM.render(
   <React.StrictMode>
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<App />} />
-        <Route path="home" element={<Home />} />
-        <Route path="search" element={<Search />} />
-        <Route path="mylist" element={<MyList />} />
-        <Route path="profile" element={<Profile />} />
+        <Route path="/home" element={<Home />} />
+        <Route path="/search" element={<Search />} />
+        <Route path="/mylist" element={<MyList />} />
+        <Route path="/profile" element={<Profile />} />
+        <Route path="/login" element={<Login />} />
       </Routes>
     </BrowserRouter>
   </React.StrictMode>,
