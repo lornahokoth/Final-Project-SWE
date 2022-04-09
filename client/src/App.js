@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react'
-import { Link } from "react-router-dom";
+import { BrowserRouter, Link, Route, Switch, NavLink } from 'react-router-dom'
 import { IoIosSearch } from "react-icons/io";
 import Login from './components/Login';
+import Home from './components/home';
 
 function App() {
     const [data, setData] = useState({})
@@ -44,6 +45,7 @@ function App() {
             >
                 <h1>PersonalPix</h1>
             </header>
+
             <nav id="navbar"
                 style={{
                     color: '#9966ff',
@@ -54,11 +56,15 @@ function App() {
                 <Link to="/home">Home</Link> |{" "}
                 <Link to="/mylist">My List</Link> |{" "}
                 <Link to="/profile">Profile</Link>
+
+                <NavLink to= "/home">Home</NavLink>
+                
                 <input type="text" placeholder="Search" onChange={handleChange}></input>
                 <button type="button" onClick={() => sendQuery()}><IoIosSearch /></button>
 
             </nav>
             <Login/>
+                
             {(typeof data.moviename === 'undefined') ? (
                 <p>Loading...</p>
             ) : (
@@ -66,6 +72,7 @@ function App() {
                     <p key={i}>{nam}</p>
                 ))
             )}
+            
         </div>
     )
 }
