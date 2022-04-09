@@ -2,14 +2,14 @@ import flask
 from flask import Flask
 
 from imdb import search_movies
-from tmdb import search_tv
+from tmdb import get_trending, search_tv
 from books import search_books
 
 app = Flask(__name__)
 
 # API Route
 @app.route("/endpoint")
-def functionname():
+def trending():
     # do stuff
     return {"names": ["Name1", "Name2", "Name3"]}
 
