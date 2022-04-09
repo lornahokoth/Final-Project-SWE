@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { Link } from "react-router-dom";
 import { IoIosSearch } from "react-icons/io";
+import Login from './components/Login';
 
 function App() {
     const [data, setData] = useState({})
@@ -82,6 +83,7 @@ function App() {
                 <button type="button" onClick={() => sendQuery()}><IoIosSearch /></button>
 
             </nav>
+            <Login/>
             {(typeof data.moviename === 'undefined') ? (
                 <p>Loading...</p>
             ) : (
