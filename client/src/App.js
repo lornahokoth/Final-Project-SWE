@@ -1,98 +1,130 @@
 import React, { useState, useEffect } from 'react'
-import { Link } from "react-router-dom";
-import { IoIosSearch } from "react-icons/io";
-import Login from './components/Login';
 
 function App() {
-    const [data, setData] = useState({})
-    const [data1, setData1] = useState({})
-    const [search, setSearch] = useState("");
 
-    useEffect(() => {
-        // fetch("/localhost:3000/endpoint").then(
-        //     res => res.json()
-        // ).then(
-        //     data => {
-        //         setData(data)
-        //         console.log(data)
-        //     }
-        // )
-    }, [])
+  const [faves, setFaves] = React.useState([])
+  const [fave, setFave] = React.useState(" ")
+  const [faveEditing, setFaveEditing] = React.useState(null)
+  const [editingText, setEditingText] = React.useState(" ")
 
-    function handleChange(e) {
-        setSearch(e.target.value)
-        console.log(search)
+  //load data
+  React.useEffect(() => {
+    const js = localStorage.getItem("faves")
+    const loadFaves = JSON.parse(js)
+    if (loadFaves) {
+      setFaves(loadFaves)
+    }
+  }, [])
+
+  //saving data into local storage
+  React.useEffect(() => {
+    const js = JSON.stringify(faves)
+    localStorage.setItem("faves", js)
+  }, [faves])
+
+  function handleSubmit(e) {
+
+    // to prevent refresh when input is entered into text box
+    e.preventDefault()
+
+    // creating new object 
+    const newFave = {
+
+      // create unique time ids for each object
+      id: new Date().getTime(),
+      text: fave,
     }
 
-    function sendQuery() {
-        console.log(search)
-        var postData = { query: search }
-        Promise.all([fetch('/search', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify(postData),
-        }),
-        fetch('/search1', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify(postData),
-        }),
-        fetch('/search2', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify(postData),
-        })
-        ]).then(function (responses) {
-            return Promise.all(responses.map(function (response) {
-                return response.json()
-            }));
-        }).then(
-            data => {
-                setData(data)
-                console.log(data)
-            }
-        )
-    }
+    // to add new objects into the array
+    setFaves([...faves].concat(newFave))
+    setFave(" ")
+  }
 
-    return (
-        <div>
-            <header
-                style={{
-                    color: '#9966ff',
-                }}
-            >
-                <h1>PersonalPix</h1>
-            </header>
-            <nav id="navbar"
-                style={{
-                    color: '#9966ff',
-                    border: "solid 10px",
-                    padding: "10px",
-                }}
-            >
-                <Link to="/home">Home</Link> |{" "}
-                <Link to="/mylist">My List</Link> |{" "}
-                <Link to="/profile">Profile</Link>
-                <input type="text" placeholder="Search" onChange={handleChange}></input>
-                <button type="button" onClick={() => sendQuery()}><IoIosSearch /></button>
+  //return only the values where the favorite object id is NOT equal to the id. 
+  function deleteFave(id) {
+    const updatedFaves = [...faves].filter((fave) => fave.id !== id)
 
-            </nav>
-            <Login/>
-            {(typeof data.moviename === 'undefined') ? (
-                <p>Loading...</p>
-            ) : (
-                data.moviename.map((nam, i) => (
-                    <p key={i}>{nam}</p>
-                ))
-            )}
-        </div>
+    setFaves(updatedFaves)
+  }
+
+  function toggleComplete(id) {
+    //if this is the favorite item updated, then take the completed value and set to the opposite 
+    const updatedFaves = [...faves].map((fave) => {
+      if (fave.id === id) {
+        fave.completed = !fave.completed
+      }
+      return fave
+    })
+
+    setFaves(updatedFaves)
+  }
+
+  //should return every favorite item once the selected item is edited first
+  function editFave(id) {
+    const updatedFaves = [...faves].map((fave) => {
+      if (fave.id === id) {
+        fave.text = editingText
+      }
+      return fave
+    })
+    setFaves(updatedFaves)
+    setFaveEditing(null)
+    setEditingText(" ")
+  }
+
+  const [data, setData] = useState({})
+
+  useEffect(() => {
+    fetch("/endpoint").then(
+      res => res.json()
+    ).then(
+      data => {
+        setData(data)
+        console.log(data)
+      }
     )
+  }, [])
+  return (
+    <div>
+      <div className='App'>
+        <h1>Your Favorites List</h1>
+        <form onSubmit={handleSubmit}>
+          <p>Add Your Favorite Books, TV shows and Movies</p>
+
+          <input
+            type="text"
+            placeholder="Enter title of books, etc..."
+            onChange={(e) => setFave(e.target.value)}
+            value={fave} />
+          <button type="submit">ADD</button>
+        </form>
+        {faves.map((fave) => <div key={fave.id}>
+          {faveEditing === fave.id ? (<input
+            type="text"
+            onChange={(e) => setEditingText(e.target.value)}
+            value={editingText} />) : (<div>{fave.text}</div>)}
+
+          <button onClick={() => deleteFave(fave.id)}>DELETE</button>
+
+          <input
+            type="checkbox"
+            onChange={() => toggleComplete(fave.id)}
+            checked={fave.completed} />
+
+          {faveEditing === fave.id ? (<button onClick={() => editFave(fave.id)}>SUBMIT</button>
+          ) : (<button onClick={() => setFaveEditing(fave.id)}>EDIT</button>
+          )}
+        </div>)}
+      </div>
+      {(typeof data.names === 'undefined') ? (
+        <p>Loading...</p>
+      ) : (
+        data.names.map((nam, i) => (
+          <p key={i}>{nam}</p>
+        ))
+      )}
+    </div>
+  )
 }
 
 export default App
