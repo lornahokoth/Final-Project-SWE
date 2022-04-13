@@ -1,3 +1,4 @@
+
 from flask import jsonify
 import requests
 import os
@@ -25,3 +26,4 @@ def search_movies(query):
     data = response.json()
 
     return jsonify(results=data["results"])
+
