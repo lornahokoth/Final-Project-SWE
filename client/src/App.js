@@ -5,18 +5,18 @@ import Login from './components/Login';
 
 function App() {
     const [data, setData] = useState({})
-    const [results, setResults] = useState({})
+    const [data1, setData1] = useState({})
     const [search, setSearch] = useState("");
 
     useEffect(() => {
-        fetch("/endpoint").then(
-            res => res.json()
-        ).then(
-            data => {
-                setData(data)
-                console.log(data)
-            }
-        )
+        // fetch("/localhost:3000/endpoint").then(
+        //     res => res.json()
+        // ).then(
+        //     data => {
+        //         setData(data)
+        //         console.log(data)
+        //     }
+        // )
     }, [])
 
     function handleChange(e) {
@@ -27,56 +27,38 @@ function App() {
     function sendQuery() {
         console.log(search)
         var postData = { query: search }
+        Promise.all([fetch('/search', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(postData),
+        }),
         fetch('/search1', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
             },
             body: JSON.stringify(postData),
+        }),
+        fetch('/search2', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(postData),
+        })
+        ]).then(function (responses) {
+            return Promise.all(responses.map(function (response) {
+                return response.json()
+            }));
         }).then(
-            res => res.json()
-        ).then(
             data => {
-                setResults(data)
+                setData(data)
                 console.log(data)
             }
         )
     }
-    // function sendQuery() {
-    //     console.log(search)
-    //     var postData = { query: search }
-    //     Promise.all([fetch('/search', {
-    //         method: 'POST',
-    //         headers: {
-    //             'Content-Type': 'application/json',
-    //         },
-    //         body: JSON.stringify(postData),
-    //     }),
-    //     fetch('/search1', {
-    //         method: 'POST',
-    //         headers: {
-    //             'Content-Type': 'application/json',
-    //         },
-    //         body: JSON.stringify(postData),
-    //     }),
-    //     fetch('/search2', {
-    //         method: 'POST',
-    //         headers: {
-    //             'Content-Type': 'application/json',
-    //         },
-    //         body: JSON.stringify(postData),
-    //     })
-    //     ]).then(function (responses) {
-    //         return Promise.all(responses.map(function (response) {
-    //             return response.json()
-    //         }));
-    //     }).then(
-    //         data => {
-    //             setResults(data)
-    //             console.log(data)
-    //         }
-    //     )
-    // }
 
     return (
         <div>
@@ -101,15 +83,13 @@ function App() {
                 <button type="button" onClick={() => sendQuery()}><IoIosSearch /></button>
 
             </nav>
-            {(typeof data.names === 'undefined') ? (
+            <Login />
+            {(typeof data.moviename === 'undefined') ? (
                 <p>Loading...</p>
             ) : (
-                data.names.map((nam, i) => (
+                data.moviename.map((nam, i) => (
                     <p key={i}>{nam}</p>
                 ))
-            )}
-            {results.results.map((show, i) =>
-                <p key={i}>{show}</p>
             )}
         </div>
     )
