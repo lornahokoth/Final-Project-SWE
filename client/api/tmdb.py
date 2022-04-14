@@ -21,18 +21,19 @@ def search_tv(query):
     response = requests.get(BASE_URL, params=query_params)
 
     data = response.json()
-    results = []
-    tv_shows = response.json()["results"]
-    for result in tv_shows:
-        results.append(result["name"])
-        results.append(result["poster_path"])
-    print(results)
+    # results = []
+    # tv_shows = response.json()["results"]
+    # for result in tv_shows:
+    #     results.append(result["name"])
+    #     results.append(result["poster_path"])
+    # print(results)
     # poster_path = data["poster_path"]
     # poster_image = f"{PIC_URL}/{POSTER_SIZE}{poster_path}"
     # return (name, poster_image)
+    return jsonify(results=data["results"])
 
 
-search_tv("snowpiercer")
+# search_tv("snowpiercer")
 
 
 def get_trending():

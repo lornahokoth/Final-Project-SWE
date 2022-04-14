@@ -9,7 +9,7 @@ function App() {
     const [search, setSearch] = useState("");
 
     useEffect(() => {
-        // fetch("/localhost:3000/endpoint").then(
+        // fetch("/endpoint").then(
         //     res => res.json()
         // ).then(
         //     data => {
@@ -84,10 +84,10 @@ function App() {
 
             </nav>
             <Login />
-            {(typeof data.moviename === 'undefined') ? (
+            {(typeof data.names === 'undefined') ? (
                 <p>Loading...</p>
             ) : (
-                data.moviename.map((nam, i) => (
+                data.names.map((nam, i) => (
                     <p key={i}>{nam}</p>
                 ))
             )}
