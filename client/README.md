@@ -33,3 +33,4 @@ It was a challenge integrating all of the APIs in a single application. It was a
 
 ## Valuable lessons learned:
 Prior to this project assignment, not many of our group members were familiar/confident with writing code in REACT JS. Since we decided to do all our app pages in react, we encountered a few different struggles with the integration of react components. We were able to work together/as well as research solutions to work through these new barriers and will continue to improve on them in Sprint 2. 
+
