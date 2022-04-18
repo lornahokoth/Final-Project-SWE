@@ -9,14 +9,14 @@ function App() {
 
 
     useEffect(() => {
-        // fetch("/endpoint").then(
-        //     res => res.json()
-        // ).then(
-        //     data => {
-        //         setData(data)
-        //         console.log(data)
-        //     }
-        // )
+        fetch("/endpoint").then(
+            res => res.json()
+        ).then(
+            data => {
+                setData(data)
+                console.log(data)
+            }
+        )
     }, [])
     const [search, setSearch] = useState("");
 
@@ -85,7 +85,9 @@ function App() {
                 <button type="button" onClick={() => sendQuery()}><IoIosSearch /></button>
 
             </nav>
-            <Login />
+            <div>
+                <Login />
+            </div>
             {(typeof data.names === 'undefined') ? (
                 <p>Loading...</p>
             ) : (
