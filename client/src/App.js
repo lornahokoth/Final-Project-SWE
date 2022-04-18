@@ -64,27 +64,6 @@ function App() {
 
     return (
         <div>
-            <header
-                style={{
-                    color: '#7373E3',
-                }}
-            >
-                <h1>PersonalPix</h1>
-            </header>
-            <nav id="navbar"
-                style={{
-                    color: '#7373E3',
-                    border: "solid 10px",
-                    padding: "10px",
-                }}
-            >
-                <Link to="/home">Home</Link> |{" "}
-                <Link to="/mylist">My List</Link> |{" "}
-                <Link to="/profile">Profile</Link>
-                <input type="text" placeholder="Search" onChange={handleChange}></input>
-                <button type="button" onClick={() => sendQuery()}><IoIosSearch /></button>
-
-            </nav>
             <div>
                 <Login />
             </div>
