@@ -5,8 +5,9 @@ from dotenv import find_dotenv, load_dotenv
 
 load_dotenv(find_dotenv())
 BASE_URL = "https://api.themoviedb.org/3/search/tv"
-BASE_URL1 = "https://api.themoviedb.org/3/tv/popular"
-PIC_URL = "https://image.tmdb.org/t/p"
+# BASE_URL1 = "https://api.themoviedb.org/3/tv/popular"
+BASE_URL1 = "https://api.themoviedb.org/3/trending/tv/day"
+PIC_URL = "https://image.tmdb.org/t/p/w200"
 POSTER_SIZE = "w100"
 
 
@@ -26,7 +27,7 @@ def search_tv(query):
     # for result in tv_shows:
     #     results.append(result["name"])
     #     results.append(result["poster_path"])
-    # print(results)
+    # print(data)
     # poster_path = data["poster_path"]
     # poster_image = f"{PIC_URL}/{POSTER_SIZE}{poster_path}"
     # return (name, poster_image)
@@ -37,7 +38,9 @@ def search_tv(query):
 
 
 def get_trending():
-    new_params = {"api_key": os.getenv("TMDB_KEY"), "language": "en-US", "page": "1"}
+    new_params = {"api_key": os.getenv("TMDB_KEY")}
+    # NEW_URL = BASE_URL1 + "?api_key=" + os.getenv("TMDB_KEY")
+    # print(NEW_URL)
 
     response = requests.get(BASE_URL1, params=new_params)
 
@@ -45,4 +48,7 @@ def get_trending():
 
     # print(popular_data["results"])
 
-    return jsonify(popular=popular_data["results"])
+    return jsonify(popular_data)
+
+
+# get_trending()
