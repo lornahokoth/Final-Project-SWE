@@ -1,12 +1,14 @@
 import emailjs from "emailjs-com";
 import React from 'react';
+import { Link } from "react-router-dom";
+import { IoIosSearch } from "react-icons/io";
 
 export default function ContactUs() {
 
     function sendEmail(e) {
         e.preventDefault();
 
-    emailjs.sendForm('gmail', 'youtube_template', e.target, 'user_JABO21I8Gm6sxByJH17Nu')
+    emailjs.sendForm('gmail', 'template_pnl6vrr', e.target, 'k7275bpZ__oSJTDIx')
         .then((result) => {
             console.log(result.text);
         }, (error) => {
