@@ -3,12 +3,14 @@ import React from 'react';
 import { Link } from "react-router-dom";
 import { IoIosSearch } from "react-icons/io";
 
+const contact_form_key = process.env.REACT_APP_CONTACTFORM_KEY
+
 export default function ContactUs() {
 
     function sendEmail(e) {
         e.preventDefault();
 
-    emailjs.sendForm('gmail', 'template_pnl6vrr', e.target, 'k7275bpZ__oSJTDIx')
+    emailjs.sendForm('gmail', 'template_pnl6vrr', e.target, contact_form_key)
         .then((result) => {
             console.log(result.text);
         }, (error) => {
