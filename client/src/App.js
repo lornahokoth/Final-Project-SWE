@@ -5,18 +5,18 @@ import Login from './components/Login';
 import './Login.css';
 function App() {
     const [data, setData] = useState({})
-    const [data1, setData1] = useState({})
     const [search, setSearch] = useState("");
 
     useEffect(() => {
         // fetch("/localhost:3000/endpoint").then(
-        //     res => res.json()
-        // ).then(
-        //     data => {
-        //         setData(data)
-        //         console.log(data)
-        //     }
-        // )
+        fetch("/endpoint").then(
+                res => res.json()
+                ).then(
+                data => {
+                setData(data)
+                console.log(data)
+                }
+                )
     }, [])
 
     function handleChange(e) {
@@ -93,10 +93,10 @@ function App() {
                 <Login/>
             </div>
 
-            {(typeof data.moviename === 'undefined') ? (
+            {(typeof data.names === 'undefined') ? (
                 <p></p>
             ) : (
-                data.moviename.map((nam, i) => (
+                data.names.map((nam, i) => (
                     <p key={i}>{nam}</p>
                 ))
             )}
