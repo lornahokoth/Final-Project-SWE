@@ -5,7 +5,7 @@ import Searchbar from '../SearchBar';
 export default function Profile() {
 
     return (
-        <main style={{ padding: "1rem 0" }}>
+        <main className="main" style={{ padding: "1rem 0" }}>
             <header
                 style={{
                     color: '#6765c7',
@@ -22,11 +22,12 @@ export default function Profile() {
             >
                 <Link to="/home">Home</Link> |{" "}
                 <Link to="/mylist">My Lists</Link> | {" "}
-                <Link to="/profile"> Profile</Link > | {" "}
-                <Link to="/contactForm"> Contact Form</Link >
+                <Link to="/profile">Profile</Link > | {" "}
+                <Link to="/contactForm">Contact Form</Link > | {" "}
                 <Link to="/search">Search</Link>
 
             </nav >
+            <p>Profile</p>
         </main >
     );
 }

@@ -8,6 +8,11 @@
   height: 200px;
 }
 
+.titles {
+  color: black;
+  text-align: left;
+}
+
 .title {
   color: #9966ff;
 }

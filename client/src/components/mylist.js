@@ -5,7 +5,7 @@ import Searchbar from '../SearchBar';
 export default function MyList() {
 
     return (
-        <main style={{ padding: "1rem 0" }}>
+        <main className="main" style={{ padding: "1rem 0" }}>
             <header
                 style={{
                     color: '#6765c7',
@@ -27,6 +27,8 @@ export default function MyList() {
                 <Link to="/search">Search</Link>
 
             </nav >
+            <p>Lists</p>
         </main >
+
     );
 }

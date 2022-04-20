@@ -6,6 +6,7 @@ import Tv from '../Tv';
 import Movie from '../Movies';
 import Books from '../Books';
 import Searchbar from '../SearchBar';
+import './components.css';
 
 export default function Home() {
     const [content, setContent] = useState([]);
@@ -47,7 +48,7 @@ export default function Home() {
     }, [])
 
     return (
-        <main style={{ padding: "1rem 0" }}>
+        <main className="main" style={{ padding: "1rem 0" }}>
             {/* // <main> */}
             <header
                 style={{
@@ -66,7 +67,7 @@ export default function Home() {
                 <Link to="/home">Home</Link> |{" "}
                 <Link to="/mylist">My List</Link> |{" "}
                 <Link to="/profile">Profile</Link> |{" "}
-                <Link to="/contactForm">Contact Form</Link>
+                <Link to="/contactForm">Contact Form</Link> |{" "}
                 <Link to="/search">Search</Link>
                 {/* <Searchbar search={search} /> */}
             </nav >

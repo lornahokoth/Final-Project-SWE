@@ -3,6 +3,16 @@
     display: flex;
 } */
 
+.main {
+    background-color: white;
+}
+
+.titles {
+    color: black;
+}
+
+
+
 /* .search {
     display: flex;
     justify-content: space-between;

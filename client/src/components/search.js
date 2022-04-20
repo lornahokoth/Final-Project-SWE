@@ -113,7 +113,7 @@ export default function Search() {
     // }, [])
 
     return (
-        <main style={{ padding: "1rem 0" }}>
+        <main className="main" style={{ padding: "1rem 0" }}>
             <header
                 style={{
                     color: '#6765c7',
@@ -130,8 +130,9 @@ export default function Search() {
             >
                 <Link className="Home" to="/home">Home</Link> |{" "}
                 <Link className="MyList" to="/mylist">My Lists</Link> |{" "}
-                <Link className="Profile" to="/profile">Profile</Link>
+                <Link className="Profile" to="/profile">Profile</Link> |{" "}
                 {/* <form className="search"> */}
+                <Link to="/contactForm">Contact Form</Link > | {" "}
                 <input type="text" placeholder="Search" onChange={handleChange}></input>
                 <button type="button" onClick={() => sendQuery()}><IoIosSearch /></button>
                 {/* </form> */}
@@ -148,7 +149,7 @@ export default function Search() {
             <div>
                 {books.map(searchBooks => (
                     <div>
-                        <h1>{searchBooks.volumeInfo.title}</h1>
+                        <h1 className="titles">{searchBooks.volumeInfo.title}</h1>
                         <p>{searchBooks.volumeInfo.subtitle}</p>
                         <img src={searchBooks.volumeInfo.imageLinks.thumbnail} alt={searchBooks.title} />
                         <p>{searchBooks.volumeInfo.description}</p>
