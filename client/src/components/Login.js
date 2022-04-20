@@ -28,20 +28,16 @@ function Login() {
     );
   };
 
-  return (
-    <div>
+  return (   
       <GoogleLogin
         clientId={clientId}
         buttonText="Login"
         onSuccess={onSuccess}
         onFailure={onFailure}
         cookiePolicy={'single_host_origin'}
-        style={{ marginTop: '100px' }}
+        style={{backgroundColor: 'grey', marginTop: '100px' }}
         isSignedIn={true}
-      />
-
-    </div>
-    
+      /> 
   );
   
 }

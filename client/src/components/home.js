@@ -127,7 +127,8 @@ export default function Home() {
             >
                 <Link to="/home">Home</Link> |{" "}
                 <Link to="/mylist">My List</Link> |{" "}
-                <Link to="/profile">Profile</Link>
+                <Link to="/profile">Profile</Link> |{" "}
+                <Link to="/contactForm">Contact Form</Link>
                 <input type="text" placeholder="Search" onChange={handleChange}></input>
                 <button type="button" onClick={() => sendQuery()}><IoIosSearch /></button>
             </nav>

@@ -24,6 +24,9 @@ There are a myriad of books, movies and tv shows to explore and it would be nice
     5. `pip3 install Flask-SQLAlchemy==2.1`
     6. `npm install react-router-dom@6`
     7. `npm install react-icons`
+    8. `npm install emailjs-com --save`
+    
+    
 
 ## What problem(s) our app solves:
 Instead of users having to cross-reference multiple sites such as Goodreads.com and Netflix.com to get a good recommendations on what book, etc. they want to explore next, this application gives users the ability to build their own list of favorites based on user ratings and to be able to share select recommended titles to other uses.

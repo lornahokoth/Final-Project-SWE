@@ -9,6 +9,7 @@ import Profile from "./components/profile";
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import Login from './components/Login';
+import ContactUs from './components/contactForm';
 
 ReactDOM.render(
   <React.StrictMode>
@@ -20,6 +21,8 @@ ReactDOM.render(
         <Route path="/mylist" element={<MyList />} />
         <Route path="/profile" element={<Profile />} />
         <Route path="/login" element={<Login />} />
+        <Route path="/contactForm" element={<ContactUs />} />
+
       </Routes>
     </BrowserRouter>
   </React.StrictMode>,
