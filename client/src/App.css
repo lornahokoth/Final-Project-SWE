@@ -3,6 +3,16 @@
   color: #9966ff;
 }
 
+.movie_image {
+  width: 300px;
+  height: 200px;
+}
+
+.titles {
+  color: black;
+  text-align: left;
+}
+
 .title {
   color: #9966ff;
 }

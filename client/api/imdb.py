@@ -24,8 +24,12 @@ def search_movies(query):
 
     response = requests.get(full_url, params=query_params)
     data = response.json()
+    # print(data)
 
-    return jsonify(results=data["results"])
+    return jsonify(data)
+
+
+# search_movies("spiderman")
 
 
 def get_trending_movies():

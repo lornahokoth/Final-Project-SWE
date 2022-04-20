@@ -2,8 +2,7 @@ import React from 'react';
 import './App.css';
 const IMG_URL = "https://image.tmdb.org/t/p/w200/";
 
-
-const Tv = ({ name, poster_path, overview }) => {
+const SearchTv = ({ name, poster_path, overview }) => {
     return (
         <div>
             <h1 className="titles">{name}</h1>
@@ -13,4 +12,4 @@ const Tv = ({ name, poster_path, overview }) => {
     )
 }
 
-export default Tv;
+export default SearchTv;
