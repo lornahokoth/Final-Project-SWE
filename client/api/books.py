@@ -18,7 +18,7 @@ def search_books(query):
     response = requests.get(BASE_URL, params=query_params)
     data = response.json()
 
-    return jsonify(results=data["items"])
+    return jsonify(data)
 
 
 # search_books("hunger games")
