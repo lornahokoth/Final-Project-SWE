@@ -1,7 +1,15 @@
+@import url('https://fonts.googleapis.com/css?family=Codystar');
+
 /* #navbar {
     float: left;
     display: flex;
 } */
+.pageTitle {
+    font-family: 'Codystar';
+    text-align: center;
+    font-size: 50px;
+    ;
+}
 
 .main {
     background-color: white;

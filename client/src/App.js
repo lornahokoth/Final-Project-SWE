@@ -28,14 +28,6 @@ function App() {
                 <h2>Login with:</h2>
                 <Login />
             </div>
-
-            {(typeof data.names === 'undefined') ? (
-                <p></p>
-            ) : (
-                data.names.map((nam, i) => (
-                    <p key={i}>{nam}</p>
-                ))
-            )}
         </div>
     )
 }

@@ -72,7 +72,7 @@ export default function Home() {
                 {/* <Searchbar search={search} /> */}
             </nav >
             <div>
-                <span className="pageTitle">Trending</span>
+                <p className="pageTitle">Trending</p>
             </div>
             <Logout />
             <div>

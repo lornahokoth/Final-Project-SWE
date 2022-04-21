@@ -151,7 +151,7 @@ export default function Search() {
                     <div>
                         <h1 className="titles">{searchBooks.volumeInfo.title}</h1>
                         <p>{searchBooks.volumeInfo.subtitle}</p>
-                        <img src={searchBooks.volumeInfo.imageLinks.thumbnail} alt={searchBooks.title} />
+                        {typeof searchBooks.volumeInfo.imageLinks != "undefined" && <img src={searchBooks.volumeInfo.imageLinks.thumbnail} alt={searchBooks.title} />}
                         <p>{searchBooks.volumeInfo.description}</p>
                     </div>
                 ))}
