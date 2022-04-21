@@ -22,7 +22,7 @@ export default function ContactUs() {
     return (
         <div>
             <button>
-                <a href="/home">Go Home</a>
+                <a href="/trending_page">Return to App</a>
             </button>
             <div className="container">
                 <form onSubmit={sendEmail}>
