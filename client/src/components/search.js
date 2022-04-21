@@ -148,7 +148,7 @@ export default function Search() {
             </div>
             <div className="trending">
                 {books.map(searchBooks => (
-                    <div className="container">
+                    <div className="container1">
                         {typeof searchBooks.volumeInfo.imageLinks != "undefined" && <img className="image" src={searchBooks.volumeInfo.imageLinks.thumbnail} alt={searchBooks.title} />}
                         <b className="title">{searchBooks.volumeInfo.title}</b>
                         <p className="info1">{searchBooks.volumeInfo.subtitle}</p>

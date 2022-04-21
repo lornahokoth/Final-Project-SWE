@@ -65,7 +65,7 @@ export default function Home() {
                 }}
             >
                 <Link to="/home">Home</Link> |{" "}
-                <Link to="/mylist">My List</Link> |{" "}
+                <Link to="/mylist">My Lists</Link> |{" "}
                 <Link to="/profile">Profile</Link> |{" "}
                 <Link to="/contactForm">Contact Form</Link> |{" "}
                 <Link to="/search">Search</Link>

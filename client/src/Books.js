@@ -4,7 +4,7 @@ import './App.css';
 
 const Books = ({ title, book_image, description, author }) => {
     return (
-        <div className="container">
+        <div className="container1">
             <img className="image" src={book_image}></img>
             <b className="title">{title}</b>
             <p className="info1">Description: {description}</p>

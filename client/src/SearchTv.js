@@ -4,7 +4,7 @@ const IMG_URL = "https://image.tmdb.org/t/p/w200/";
 
 const SearchTv = ({ name, poster_path, first_air_date }) => {
     return (
-        <div className="container">
+        <div className="container1">
             <img className="image" src={IMG_URL + poster_path}></img>
             <b className="title">{name}</b>
             <span className="info">
