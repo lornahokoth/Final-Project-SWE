@@ -54,17 +54,13 @@ export default function Home() {
                 style={{
                     color: '#6765c7',
                 }}
-                
-            >   
-            <div class="logout">
-                <Logout />
-            </div>
-            <h1>
-                PersonalPix    
-            </h1>
-    
-                
-     
+            >
+                <div class="logout">
+                    <Logout />
+                </div>
+                <h1>
+                    PersonalPix
+                </h1>
             </header>
             <nav id="navbar"
                 style={{
@@ -74,25 +70,24 @@ export default function Home() {
                 }}
             >
                 <Link to="/home">Home</Link> |{" "}
-                <Link to="/mylist">My List</Link> |{" "}
+                <Link to="/mylist">My Lists</Link> |{" "}
                 <Link to="/profile">Profile</Link> |{" "}
                 <Link to="/contactForm">Contact Form</Link> |{" "}
                 <Link to="/search">Search</Link>
                 {/* <Searchbar search={search} /> */}
             </nav >
             <div>
-                <span className="pageTitle">Trending</span>
+                <p className="pageTitle">Trending</p>
             </div>
-            
-            <div>
+            <div className="trending">
                 {movies.map((movieReq) =>
                     <Movie key={movieReq.id} {...movieReq} />)}
             </div>
-            <div>
+            <div className="trending">
                 {content.map((tvReq) =>
                     <Tv key={tvReq.id} {...tvReq} />)}
             </div>
-            <div>
+            <div className="trending">
                 {books.map((bookReq) =>
                     <Books key={bookReq.rank} {...bookReq} />)}
             </div>

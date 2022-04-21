@@ -4,9 +4,9 @@ import { Link } from "react-router-dom";
 import { IoIosSearch, IoMdReturnRight } from 'react-icons/io';
 import SearchResults from '../SearchResults';
 import SearchTv from '../SearchTv';
+import Logout from './Logout';
 // import SearchBooks from '../SearchBooks';
 import './components.css'
-import Logout from './Logout';
 
 
 export default function Search() {
@@ -66,52 +66,6 @@ export default function Search() {
             }
         )
     }
-    // function sendQuery() {
-    //     console.log(search)
-    //     var postData = { query: search }
-    //     Promise.all([fetch('/search', {
-    //         method: 'POST',
-    //         headers: {
-    //             'Content-Type': 'application/json',
-    //         },
-    //         body: JSON.stringify(postData),
-    //     }),
-    //     fetch('/search1', {
-    //         method: 'POST',
-    //         headers: {
-    //             'Content-Type': 'application/json',
-    //         },
-    //         body: JSON.stringify(postData),
-    //     }),
-    //     fetch('/search2', {
-    //         method: 'POST',
-    //         headers: {
-    //             'Content-Type': 'application/json',
-    //         },
-    //         body: JSON.stringify(postData),
-    //     }),
-    //     ]).then(function (responses) {
-    //         return Promise.all(responses.map(function (response) {
-    //             return response.json()
-    //         }));
-    //     }).then(
-    //         data => {
-    //             setData(data)
-    //             console.log(data)
-    //         }
-    //     )
-    // }
-    // const [data, setData] = useState({})
-    // useEffect(() => {
-    //     fetch("http://localhost:3000/endpoint").then(
-    //         res => res.json()
-    //     ).then(
-    //         data => {
-    //             setData(data)
-    //             console.log(data)
-    //         }
-    //     )
-    // }, [])
 
     return (
         <main className="main" style={{ padding: "1rem 0" }}>
@@ -120,13 +74,12 @@ export default function Search() {
                     color: '#6765c7',
                 }}
             >
-            <div class="logout">
-                <Logout />
-            </div>
-            <h1>
-                PersonalPix    
-            </h1>
-            
+                <div class="logout">
+                    <Logout />
+                </div>
+                <h1>
+                    PersonalPix
+                </h1>
             </header>
             <nav id="navbar"
                 style={{
@@ -145,21 +98,21 @@ export default function Search() {
                 {/* </form> */}
 
             </nav>
-            <div>
+            <div className="trending">
                 {data.map((searchRes) =>
                     <SearchResults key={searchRes.id} {...searchRes} />)}
             </div>
-            <div>
+            <div className="trending">
                 {tv.map((searchTv) =>
                     <SearchTv key={searchTv.id} {...searchTv} />)}
             </div>
-            <div>
+            <div className="trending">
                 {books.map(searchBooks => (
-                    <div>
-                        <h1 className="titles">{searchBooks.volumeInfo.title}</h1>
-                        <p>{searchBooks.volumeInfo.subtitle}</p>
-                        <img src={searchBooks.volumeInfo.imageLinks.thumbnail} alt={searchBooks.title} />
-                        <p>{searchBooks.volumeInfo.description}</p>
+                    <div className="container1">
+                        {typeof searchBooks.volumeInfo.imageLinks != "undefined" && <img className="image" src={searchBooks.volumeInfo.imageLinks.thumbnail} alt={searchBooks.title} />}
+                        <b className="title">{searchBooks.volumeInfo.title}</b>
+                        <p className="info1">{searchBooks.volumeInfo.subtitle}</p>
+                        <p className="info1">{searchBooks.volumeInfo.authors}</p>
                     </div>
                 ))}
             </div>

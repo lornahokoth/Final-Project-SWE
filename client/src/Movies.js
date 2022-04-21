@@ -4,11 +4,10 @@ import './App.css';
 
 const Movie = ({ title, image, year }) => {
     return (
-        <div>
-            {/* <h1>{title}</h1> */}
-            <h1 className="titles">{title}</h1>
-            <img className="movie_image" src={image}></img>
-            <p>{year}</p>
+        <div className="container1">
+            <img className="image" src={image}></img>
+            <b className="title">{title}</b>
+            <p className="info1">{year}</p>
         </div>
     )
 }
