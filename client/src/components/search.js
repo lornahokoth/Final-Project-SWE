@@ -89,6 +89,7 @@ export default function Search() {
                 }}
             >
                 <Link className="Home" to="/home">Home</Link> |{" "}
+                <Link to="/trending_page">Trending</Link> |{" "}
                 <Link className="MyList" to="/mylist">My Lists</Link> |{" "}
                 <Link className="Profile" to="/profile">Profile</Link> |{" "}
                 {/* <form className="search"> */}
