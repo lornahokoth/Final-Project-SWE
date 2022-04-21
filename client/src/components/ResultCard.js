@@ -1,6 +1,6 @@
 import React from 'react'
 
-export default function ResultCard ({movies, updateName}) {
+export default function ResultCard ({results, updateName}) {
 
     function onClick(event) {
         var input = event.target.innerText;
@@ -9,10 +9,10 @@ export default function ResultCard ({movies, updateName}) {
 
     return (
         <ul>
-            {movies.map((movie) => {
+            {results.map((result) => {
                 return (
-                    <li key={movie.id} onClick={onClick}>
-                        {movie.title} - ({movie.id})
+                    <li key={result.id} onClick={onClick}>
+                        {result.title} - ({result.id})
                     </li>
                 )
             })}
