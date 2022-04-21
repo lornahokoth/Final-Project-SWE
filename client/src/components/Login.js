@@ -19,6 +19,7 @@ function Login() {
       `Logged in successfully welcome ${res.profileObj.name} 😍. \n See console for full profile object.`
     );
     refreshTokenSetup(res);
+    document.cookie = "user_id=" + res.profileObj.googleId + "; path=/";
     navigate('/home');
   };
 
