@@ -22,9 +22,10 @@ There are a myriad of books, movies and tv shows to explore and it would be nice
     3. `pip3 install flask`
     4. `pip3 install psycopg2-binary`
     5. `pip3 install Flask-SQLAlchemy==2.1`
-    6. `npm install react-router-dom@6`
-    7. `npm install react-icons`
-    8. `npm install emailjs-com --save`
+    6. `npm i react-scripts`
+    7. `npm install react-router-dom@6`
+    8. `npm install react-icons`
+    9. `npm install emailjs-com --save`
     
     
 
