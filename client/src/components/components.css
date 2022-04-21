@@ -8,7 +8,6 @@
     font-family: 'Codystar';
     text-align: center;
     font-size: 50px;
-    ;
 }
 
 .main {
@@ -17,6 +16,34 @@
 
 .titles {
     color: black;
+}
+
+.trending {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    width: 200px;
+    padding: 5px;
+    margin: 5px 0;
+    background-color: #6765c7;
+    border-radius: 10px;
+    position: relative;
+}
+
+.container:hover {
+    background-color: grey;
+    color: white;
+}
+
+@container (max-width: 550px) {
+    .container {
+        width: 46%;
+    }
 }
 
 

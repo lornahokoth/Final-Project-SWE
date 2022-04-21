@@ -3,35 +3,51 @@
   color: #6765c7;
 }
 
-.movie {
+.container {
   display: flex;
   flex-direction: column;
   width: 200px;
   padding: 5px;
   margin: 5px 0;
-  background-color: grey;
+  background-color: #6765c7;
   border-radius: 10px;
   position: relative;
 }
 
-.movie:hover {
-  background-color: black;
+.container:hover {
+  background-color: grey;
   color: white;
 }
 
-/* 
-.movie_image {
-  width: 300px;
-  height: 200px;
-} */
-/* 
-.titles {
-  color: black;
-  /* text-align: left; */
-/* } */
+@container (max-width: 550px) {
+  .container {
+    width: 46%;
+  }
+}
+
+
+.image {
+  border-radius: 10px
+}
+
 
 .title {
-  color: #9966ff;
+  width: 100%;
+  text-align: center;
+  padding: 8px 0;
+}
+
+.info1 {
+  text-align: center;
+}
+
+.info {
+  display: flex;
+  justify-content: space-between;
+  text-align: center;
+  padding-bottom: 3px;
+  padding: 0 2px;
+  padding-bottom: 3px;
 }
 
 .navbar {

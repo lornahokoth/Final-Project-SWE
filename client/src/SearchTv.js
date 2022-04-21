@@ -2,12 +2,16 @@ import React from 'react';
 import './App.css';
 const IMG_URL = "https://image.tmdb.org/t/p/w200/";
 
-const SearchTv = ({ name, poster_path, overview }) => {
+const SearchTv = ({ name, poster_path, first_air_date }) => {
     return (
-        <div>
-            <h1 className="titles">{name}</h1>
-            <img src={IMG_URL + poster_path}></img>
-            <p>{overview}</p>
+        <div className="container">
+            <img className="image" src={IMG_URL + poster_path}></img>
+            <b className="title">{name}</b>
+            <span className="info">
+                <p>tv</p>
+                <span className="info">{first_air_date}</span>
+            </span>
+            {/* <p className="info1">{overview}</p> */}
         </div>
     )
 }

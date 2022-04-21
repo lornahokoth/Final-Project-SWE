@@ -138,21 +138,21 @@ export default function Search() {
                 {/* </form> */}
 
             </nav>
-            <div>
+            <div className="trending">
                 {data.map((searchRes) =>
                     <SearchResults key={searchRes.id} {...searchRes} />)}
             </div>
-            <div>
+            <div className="trending">
                 {tv.map((searchTv) =>
                     <SearchTv key={searchTv.id} {...searchTv} />)}
             </div>
-            <div>
+            <div className="trending">
                 {books.map(searchBooks => (
-                    <div>
-                        <h1 className="titles">{searchBooks.volumeInfo.title}</h1>
-                        <p>{searchBooks.volumeInfo.subtitle}</p>
-                        {typeof searchBooks.volumeInfo.imageLinks != "undefined" && <img src={searchBooks.volumeInfo.imageLinks.thumbnail} alt={searchBooks.title} />}
-                        <p>{searchBooks.volumeInfo.description}</p>
+                    <div className="container">
+                        {typeof searchBooks.volumeInfo.imageLinks != "undefined" && <img className="image" src={searchBooks.volumeInfo.imageLinks.thumbnail} alt={searchBooks.title} />}
+                        <b className="title">{searchBooks.volumeInfo.title}</b>
+                        <p className="info1">{searchBooks.volumeInfo.subtitle}</p>
+                        <p className="info1">{searchBooks.volumeInfo.authors}</p>
                     </div>
                 ))}
             </div>

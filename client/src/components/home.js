@@ -75,15 +75,15 @@ export default function Home() {
                 <p className="pageTitle">Trending</p>
             </div>
             <Logout />
-            <div>
+            <div className="trending">
                 {movies.map((movieReq) =>
                     <Movie key={movieReq.id} {...movieReq} />)}
             </div>
-            <div>
+            <div className="trending">
                 {content.map((tvReq) =>
                     <Tv key={tvReq.id} {...tvReq} />)}
             </div>
-            <div>
+            <div className="trending">
                 {books.map((bookReq) =>
                     <Books key={bookReq.rank} {...bookReq} />)}
             </div>

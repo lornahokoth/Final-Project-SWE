@@ -3,12 +3,16 @@ import './App.css';
 const IMG_URL = "https://image.tmdb.org/t/p/w200/";
 
 
-const Tv = ({ name, poster_path, overview }) => {
+const Tv = ({ name, poster_path, media_type, first_air_date }) => {
     return (
-        <div>
-            <h1 className="titles">{name}</h1>
-            <img src={IMG_URL + poster_path}></img>
-            <p>{overview}</p>
+        <div className="container">
+            <img className="movie_image" src={IMG_URL + poster_path}></img>
+            <b className="title">{name}</b>
+            <span className="info">
+                {media_type}
+                <span className="info">{first_air_date}</span>
+            </span>
+
         </div>
     )
 }
