@@ -135,7 +135,7 @@ class Lists(db.Model):
                         "list_name": list_name,
                         "media_type": media_type,
                         "description": description,
-                        "list_content": [],
+                        "list_content": list_content,
                     }
                 )
 
@@ -150,28 +150,15 @@ class ListItems(db.Model):
     )  # may need to change to string depending on IDs given by API
     rating = db.Column(db.Integer)
 
-    def addListItem(list_id, media_id, rating, ranking):
+    def addListItem(list_id, media_id):
         listItem = ListItems.query.filter_by(list_id=list_id, media_id=media_id).first()
         if not listItem:
-            newListItem = ListItems(
-                list_id=list_id, media_id=media_id, rating=rating, ranking=ranking
-            )
+            newListItem = ListItems(list_id=list_id, media_id=media_id)
             db.session.add(newListItem)
             db.session.commit()
+            return newListItem.id
         else:
-            return "Item Already in List"
-
-    def updateListItem(id, rating, ranking):
-        listItem = ListItems.query.filter_by(id=id).first()
-        if not listItem:
-            return "List Item Not Found"
-        else:
-            if rating != "":
-                listItem.rating = rating
-            if ranking != "":
-                listItem.ranking = ranking
-            db.session.commit()
-            return "List Item Updated"
+            return -1
 
     def deleteListItem(id):
         ListItems.query.filter_by(id=id).delete()
@@ -184,13 +171,11 @@ class ListItems(db.Model):
             id = item.id
             list_id = item.list_id
             media_id = item.media_id
-            rating = item.rating
             list_items.append(
                 {
                     "id": id,
                     "list_id": list_id,
                     "media_id": media_id,
-                    "rating": rating,
                 }
             )
 

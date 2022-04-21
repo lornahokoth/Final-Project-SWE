@@ -97,21 +97,40 @@ export default function MyList() {
         setMyLists([...list]);
     }
 
-    function addToListHandle(list_id, name, rating, media_id) {
-        var list = myLists;
+    function addToListHandle(list_id, name, media_id) {
         var newItem = {
-            "id": Math.random().toString(),
+            "id": -1,
             "name": name,
-            "rating": rating,
             "media_id": media_id,
         };
-        for (var i = 0; i < list.length; i++) {
-            if (list[i].id == list_id) {
-                list[i].list_content.push(newItem);
-            }
-        }
 
-        setMyLists([...list]);
+        var postData = {
+            "list_id": list_id,
+            "media_id": media_id,
+        }
+        fetch("/addNewItem", {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'applicaton/json',
+            },
+            body: JSON.stringify(postData),
+        }).then(
+            res => res.json()
+        ).then(
+            data => {
+                if (data != -1) {
+                    var list = myLists;
+                    newItem["id"] = data
+                    for (var i = 0; i < list.length; i++) {
+                        if (list[i].id == list_id) {
+                            list[i].list_content.push(newItem);
+                        }
+                    }
+                    console.log(list)
+                    setMyLists([...list]);
+                }
+            }
+        )
     }
 
     function removeFromListHandle(list_id, content_id) {

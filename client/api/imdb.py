@@ -8,6 +8,7 @@ load_dotenv(find_dotenv())
 
 BASE_URL = "https://imdb-api.com/en/API/SearchMovie"
 BASE_URL2 = "https://imdb-api.com/en/API/MostPopularMovies"
+BASE_URL3 = "https://imdb-api.com/en/API/Title"
 IMDB_KEY = os.getenv("IMDB_KEY")
 
 
@@ -43,3 +44,11 @@ def get_trending_movies():
     trending_movies = response.json()
 
     return jsonify(trending_movies)
+
+
+def get_movie_detail(id):
+    new_url = BASE_URL3 + "/" + IMDB_KEY + "/" + id
+    response = requests.get(new_url)
+    movie_details = response.json()
+
+    return jsonify(movie_details)

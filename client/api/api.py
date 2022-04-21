@@ -1,10 +1,11 @@
+from crypt import methods
 import flask
 import os
 from flask import Flask, jsonify
 
-from imdb import search_movies, get_trending_movies
-from tmdb import get_trending, search_tv
-from books import search_books
+from imdb import search_movies, get_trending_movies, get_movie_detail
+from tmdb import get_trending, search_tv, get_tv_detail
+from books import search_books, get_book_detail
 from wiki import get_best_sellers
 from dbs import Users, UserProfile, Lists, ListItems, ListSharedWith, db
 
@@ -95,6 +96,42 @@ def add_new_list():
     list_type = data["listType"]
     my_lists = Lists.addList(user_id, list_name, list_type, "")
     return jsonify(my_lists)
+
+
+@app.route("/addNewItem", methods=["POST"])
+def add_new_item():
+    data = flask.request.get_json(force=True)
+    list_id = data["list_id"]
+    media_id = data["media_id"]
+    my_item = ListItems.addListItem(list_id, media_id)
+    return jsonify(my_item)
+
+
+@app.route("/getMovieDetails", methods=["POST"])
+def get_movie_details():
+    data = flask.request.get_json(force=True)
+    id = data["media_id"]
+    movie_details = get_movie_detail(id)
+
+    return movie_details
+
+
+@app.route("/getTVDetails", methods=["POST"])
+def get_tv_details():
+    data = flask.request.get_json(force=True)
+    id = data["media_id"]
+    tv_details = get_tv_detail(id)
+
+    return tv_details
+
+
+@app.route("/getBookDetails", methods=["POST"])
+def get_book_details():
+    data = flask.request.get_json(force=True)
+    id = data["media_id"]
+    book_details = get_book_detail(id)
+
+    return book_details
 
 
 if __name__ == "__main__":

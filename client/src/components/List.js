@@ -6,7 +6,6 @@ export default function List({ onAddItem, onDeleteList, onDeleteItem, listId, li
 
 
     const [newItemName, setNewItemName] = useState('');
-    const [newItemRating, setNewItemRating] = useState('');
     const [newMediaId, setNewMediaId] = useState('');
     const [results, setResults] = useState([]);
 
@@ -36,7 +35,7 @@ export default function List({ onAddItem, onDeleteList, onDeleteItem, listId, li
                             for (var i = 0; i < data.results.length; i++) {
                                 var newResult = {
                                     "title": data.results[i].title,
-                                    "media_id": data.results[i].id
+                                    "id": data.results[i].id
                                 }
                                 resultList.push(newResult);
                                 if (resultList.length >= 10) {
@@ -115,17 +114,12 @@ export default function List({ onAddItem, onDeleteList, onDeleteItem, listId, li
         setResults([]);
     }
 
-    function updateRatingHandle(event) {
-        setNewItemRating(event.target.value);
-    }
-
     function addItemHandle() {
-        if (newItemName == '' || newItemRating == '') {
+        if (newItemName == '') {
             return;
         }
-        onAddItem(listId, newItemName, newItemRating, newMediaId);
+        onAddItem(listId, newItemName, newMediaId);
         setNewItemName('');
-        setNewItemRating('');
     }
 
     function deleteItemHandle(itemId) {
@@ -141,8 +135,8 @@ export default function List({ onAddItem, onDeleteList, onDeleteItem, listId, li
                     <ListContent key={content.id}
                         onDeleteItem={deleteItemHandle}
                         itemId={content.id}
-                        name={content.name}
-                        rating={content.rating}
+                        media_id={content.media_id}
+                        media_type={listType}
                     />
                 ))}
             </ul>
@@ -150,7 +144,6 @@ export default function List({ onAddItem, onDeleteList, onDeleteItem, listId, li
             {results.length > 0 && (
                 <ResultCard results={results} updateName={updateName} />
             )}
-            <input name="itemRating" id="itemRating" type="number" value={newItemRating} placeholder="Rating" onChange={updateRatingHandle}></input>
             <button onClick={addItemHandle}>Add To List</button>
             <hr></hr>
         </div>
