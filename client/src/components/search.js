@@ -6,6 +6,7 @@ import SearchResults from '../SearchResults';
 import SearchTv from '../SearchTv';
 // import SearchBooks from '../SearchBooks';
 import './components.css'
+import Logout from './Logout';
 
 
 export default function Search() {
@@ -119,7 +120,13 @@ export default function Search() {
                     color: '#6765c7',
                 }}
             >
-                <h1>PersonalPix</h1>
+            <div class="logout">
+                <Logout />
+            </div>
+            <h1>
+                PersonalPix    
+            </h1>
+            
             </header>
             <nav id="navbar"
                 style={{

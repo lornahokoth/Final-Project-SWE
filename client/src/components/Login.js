@@ -5,6 +5,7 @@ import { refreshTokenSetup } from '../utils/refreshToken';
 import { useState } from 'react';
 import Home from './home';
 import { useNavigate } from 'react-router-dom';
+import './components.css';
 
 
 const clientId = process.env.REACT_APP_GOOGLE_CLIENT_ID
