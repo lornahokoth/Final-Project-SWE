@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import { IoIosSearch, IoMdReturnRight } from 'react-icons/io';
 import SearchResults from '../SearchResults';
 import SearchTv from '../SearchTv';
+import Logout from './Logout';
 // import SearchBooks from '../SearchBooks';
 import './components.css'
 
@@ -65,52 +66,6 @@ export default function Search() {
             }
         )
     }
-    // function sendQuery() {
-    //     console.log(search)
-    //     var postData = { query: search }
-    //     Promise.all([fetch('/search', {
-    //         method: 'POST',
-    //         headers: {
-    //             'Content-Type': 'application/json',
-    //         },
-    //         body: JSON.stringify(postData),
-    //     }),
-    //     fetch('/search1', {
-    //         method: 'POST',
-    //         headers: {
-    //             'Content-Type': 'application/json',
-    //         },
-    //         body: JSON.stringify(postData),
-    //     }),
-    //     fetch('/search2', {
-    //         method: 'POST',
-    //         headers: {
-    //             'Content-Type': 'application/json',
-    //         },
-    //         body: JSON.stringify(postData),
-    //     }),
-    //     ]).then(function (responses) {
-    //         return Promise.all(responses.map(function (response) {
-    //             return response.json()
-    //         }));
-    //     }).then(
-    //         data => {
-    //             setData(data)
-    //             console.log(data)
-    //         }
-    //     )
-    // }
-    // const [data, setData] = useState({})
-    // useEffect(() => {
-    //     fetch("http://localhost:3000/endpoint").then(
-    //         res => res.json()
-    //     ).then(
-    //         data => {
-    //             setData(data)
-    //             console.log(data)
-    //         }
-    //     )
-    // }, [])
 
     return (
         <main className="main" style={{ padding: "1rem 0" }}>
@@ -119,7 +74,12 @@ export default function Search() {
                     color: '#6765c7',
                 }}
             >
-                <h1>PersonalPix</h1>
+                <div class="logout">
+                    <Logout />
+                </div>
+                <h1>
+                    PersonalPix
+                </h1>
             </header>
             <nav id="navbar"
                 style={{

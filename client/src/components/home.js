@@ -55,7 +55,12 @@ export default function Home() {
                     color: '#6765c7',
                 }}
             >
-                <h1>PersonalPix</h1>
+                <div class="logout">
+                    <Logout />
+                </div>
+                <h1>
+                    PersonalPix
+                </h1>
             </header>
             <nav id="navbar"
                 style={{
@@ -74,7 +79,6 @@ export default function Home() {
             <div>
                 <p className="pageTitle">Trending</p>
             </div>
-            <Logout />
             <div className="trending">
                 {movies.map((movieReq) =>
                     <Movie key={movieReq.id} {...movieReq} />)}
