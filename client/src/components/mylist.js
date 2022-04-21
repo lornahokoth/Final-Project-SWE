@@ -12,13 +12,13 @@ export default function MyList() {
                     color: '#6765c7',
                 }}
             >
-            <div class="logout">
-                <Logout />
-            </div>
-            <h1>
-                PersonalPix    
-            </h1>
-            
+                <div class="logout">
+                    <Logout />
+                </div>
+                <h1>
+                    PersonalPix
+                </h1>
+
             </header>
             <nav id="navbar"
                 style={{
@@ -28,6 +28,7 @@ export default function MyList() {
                 }}
             >
                 <Link to="/home">Home</Link> |{" "}
+                <Link to="/trending_page">Trending</Link> |{" "}
                 <Link to="/mylist">My Lists</Link> | {" "}
                 < Link to="/profile" > Profile</Link > | {" "}
                 < Link to="/contactForm" > Contact Form</Link > | {" "}
