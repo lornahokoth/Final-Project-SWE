@@ -11,6 +11,10 @@
     color: black;
 }
 
+.logout{
+    float:right;
+    margin-bottom: 50px;
+}
 
 
 /* .search {

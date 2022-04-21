@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { Link } from "react-router-dom";
 import Searchbar from '../SearchBar';
+import Logout from './Logout';
 
 export default function MyList() {
 
@@ -11,7 +12,13 @@ export default function MyList() {
                     color: '#6765c7',
                 }}
             >
-                <h1>PersonalPix</h1>
+            <div class="logout">
+                <Logout />
+            </div>
+            <h1>
+                PersonalPix    
+            </h1>
+            
             </header>
             <nav id="navbar"
                 style={{
