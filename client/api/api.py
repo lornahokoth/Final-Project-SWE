@@ -107,6 +107,22 @@ def add_new_item():
     return jsonify(my_item)
 
 
+@app.route("/deleteList", methods=["POST"])
+def delete_list():
+    data = flask.request.get_json(force=True)
+    list_id = data["list_id"]
+    ret = Lists.deleteList(list_id)
+    return jsonify(ret)
+
+
+@app.route("/deleteItem", methods=["POST"])
+def delete_item():
+    data = flask.request.get_json(force=True)
+    item_id = data["item_id"]
+    ret = ListItems.deleteListItem(item_id)
+    return jsonify(ret)
+
+
 @app.route("/getMovieDetails", methods=["POST"])
 def get_movie_details():
     data = flask.request.get_json(force=True)
