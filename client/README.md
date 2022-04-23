@@ -26,10 +26,10 @@ There are a myriad of books, movies and tv shows to explore and it would be nice
     7. `npm install react-router-dom@6`
     8. `npm install react-icons`
     9. `npm install emailjs-com --save`
-    10. `npm install react-google-login --legacy-peer-deps`
-    
-
-    
+    10. `npm i--save @fortawesome/fontawesome-svg-core`
+    11. `npm install --save @fortawesome/free-solid-svg-icons`
+    12. `npm install --save @fortawesome/react-fontawesome`
+    13. `npm install react-google-login --legacy-peer-deps`
     
 
 ## What problem(s) our app solves:
