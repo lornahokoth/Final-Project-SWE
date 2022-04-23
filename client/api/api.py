@@ -1,12 +1,13 @@
-from crypt import methods
-import flask
+"""This file is the main file of our flask app that contains our app configurations as well as
+routes for our app"""
 import os
+import flask
 from flask import Flask, jsonify
 
 from imdb import search_movies, get_trending_movies, get_movie_detail
 from tmdb import get_trending, search_tv, get_tv_detail
 from books import search_books, get_book_detail
-from wiki import get_best_sellers
+from nytimes import get_best_sellers
 from dbs import Lists, ListItems, db
 
 app = Flask(__name__)
@@ -26,56 +27,59 @@ with app.app_context():
 # API Route
 @app.route("/endpoint")
 def index():
+    """Test route"""
     # do stuff
     return {"names": ["Name1", "Name2", "Name3"]}
 
 
 @app.route("/search", methods=["POST"])
 def get_search():
+    """Return results from IMDB movie search"""
     data = flask.request.get_json()
     query = data["query"]
     movie_results = search_movies(query)
-    # tv_results = search_tv(query)
 
     return movie_results
 
 
 @app.route("/search1", methods=["POST"])
 def get_search1():
+    """Returns results from TMDB tv search"""
     data = flask.request.get_json()
     query = data["query"]
     tv_results = search_tv(query)
-    # tv_results = search_tv(query)
 
     return tv_results
 
 
 @app.route("/search2", methods=["POST"])
 def get_search2():
+    """Returns results from Google Books search"""
     data = flask.request.get_json()
     query = data["query"]
     book_results = search_books(query)
-    # tv_results = search_tv(query)
 
     return book_results
 
 
 @app.route("/trending", methods=["GET"])
 def trending():
-    data = flask.request.get_json()
+    """Returns data from TMDB trending tv shows"""
     trending_results = get_trending()
-    # print(trending_results)
+
     return trending_results
 
 
 @app.route("/trendingMovies", methods=["GET"])
 def trending_movies():
-    trending_movies = get_trending_movies()
-    return trending_movies
+    """Returns results from IMDB trending movies"""
+    trending_film = get_trending_movies()
+    return trending_film
 
 
 @app.route("/bestSellers", methods=["GET"])
 def best_selling_books():
+    """Returns results from NY Times Books API current best sellers"""
     best_books = get_best_sellers()
     return best_books
 

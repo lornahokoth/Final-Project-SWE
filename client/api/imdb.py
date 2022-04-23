@@ -1,6 +1,7 @@
+"""This handles IMDB API query and returns movie details"""
+import os
 from flask import jsonify
 import requests
-import os
 from dotenv import find_dotenv, load_dotenv
 
 
@@ -13,7 +14,7 @@ IMDB_KEY = os.getenv("IMDB_KEY")
 
 
 def search_movies(query):
-    """Returns title, image, and description of movie results"""
+    """Returns json data from movie search"""
 
     query_params = {
         "lang": "en",
@@ -34,6 +35,7 @@ def search_movies(query):
 
 
 def get_trending_movies():
+    """Returns json data of trending movies"""
     new_params = {
         "lang": "en",
         "apiKey": IMDB_KEY,
@@ -47,6 +49,7 @@ def get_trending_movies():
 
 
 def get_movie_detail(id):
+    """Returns json data of movie details"""
     new_url = BASE_URL3 + "/" + IMDB_KEY + "/" + id
     response = requests.get(new_url)
     movie_details = response.json()
