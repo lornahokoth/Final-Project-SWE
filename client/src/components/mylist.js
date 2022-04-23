@@ -41,7 +41,6 @@ export default function MyList() {
             res => res.json()
         ).then(
             data => {
-                console.log(data)
                 setMyLists([...data])
             }
         )
