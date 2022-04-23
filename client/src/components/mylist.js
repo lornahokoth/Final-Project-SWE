@@ -1,9 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { Link } from "react-router-dom";
-import Searchbar from '../SearchBar';
 import Logout from './Logout';
 import CreateList from './CreateList';
-import SharedLists from './SharedLists';
 import MyLists from './MyLists';
 import './mylist.css';
 
@@ -15,10 +13,10 @@ export default function MyList() {
         let ca = decodedCookie.split(';');
         for (let i = 0; i < ca.length; i++) {
             let c = ca[i];
-            while (c.charAt(0) == ' ') {
+            while (c.charAt(0) === ' ') {
                 c = c.substring(1);
             }
-            if (c.indexOf(name) == 0) {
+            if (c.indexOf(name) === 0) {
                 return c.substring(name.length, c.length);
             }
         }
@@ -26,7 +24,6 @@ export default function MyList() {
     }
 
     const [myLists, setMyLists] = useState([]);
-    const [sharedLists, setSharedLists] = useState([]);
 
     useEffect(() => {
         const user_id = getCookie("user_id");
@@ -45,15 +42,6 @@ export default function MyList() {
             }
         )
     }, [])
-
-    // useEffect(() => {
-    //     fetch("/getSharedLists")
-    //         .then((res) => res.json())
-    //         .then(data => {
-    //             console.log(data);
-    //             setSharedLists(data.results);
-    //         })
-    // }, [])
 
 
 
@@ -100,10 +88,10 @@ export default function MyList() {
             res => res.json()
         ).then(
             data => {
-                if (data != -1) {
+                if (data !== -1) {
                     var list = myLists;
                     for (var i = 0; i < list.length; i++) {
-                        if (list[i].id == id) {
+                        if (list[i].id === id) {
                             list.splice(i, 1);
                             break;
                         }
@@ -135,11 +123,11 @@ export default function MyList() {
             res => res.json()
         ).then(
             data => {
-                if (data != -1) {
+                if (data !== -1) {
                     var list = myLists;
                     newItem["id"] = data
                     for (var i = 0; i < list.length; i++) {
-                        if (list[i].id == list_id) {
+                        if (list[i].id === list_id) {
                             list[i].list_content.push(newItem);
                         }
                     }
@@ -166,13 +154,13 @@ export default function MyList() {
             res => res.json()
         ).then(
             data => {
-                if (data != -1) {
+                if (data !== -1) {
                     var list = myLists;
                     var found = false;
                     for (var i = 0; i < list.length; i++) {
-                        if (list[i].id == list_id) {
+                        if (list[i].id === list_id) {
                             for (var j = 0; j < list[i].list_content.length; j++) {
-                                if (list[i].list_content[j].id == item_id) {
+                                if (list[i].list_content[j].id === item_id) {
                                     list[i].list_content.splice(j, 1)
                                     found = true;
                                     break;
@@ -227,8 +215,6 @@ export default function MyList() {
                     onDeleteList={deleteListHandle}
                     onAddToList={addToListHandle}
                     onRemoveFromList={removeFromListHandle} />}
-                {/* {typeof sharedLists == "undefined" && <p>Your list is empty</p>}
-                {typeof sharedLists != "undefined" && <SharedLists list={sharedLists} />} */}
             </div>
         </main >
 
