@@ -13,22 +13,22 @@ import Login from './components/Login';
 import ContactUs from './components/contactForm';
 
 ReactDOM.render(
-  <React.StrictMode>
-    <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<App />} />
-        <Route path="/home" element={<Home />} />
-        <Route path="/trending_page" element={<Trending />} />
-        <Route path="/search" element={<Search />} />
-        <Route path="/mylist" element={<MyList />} />
-        <Route path="/profile" element={<Profile />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/contactForm" element={<ContactUs />} />
+    <React.StrictMode>
+        <BrowserRouter>
+            <Routes>
+                <Route path="/" element={<App />} />
+                <Route path="/home" element={<Home />} />
+                <Route path="/trending_page" element={<Trending />} />
+                <Route path="/search" element={<Search />} />
+                <Route path="/mylist" element={<MyList />} />
+                <Route path="/profile" element={<Profile />} />
+                <Route path="/login" element={<Login />} />
+                <Route path="/contactForm" element={<ContactUs />} />
 
-      </Routes>
-    </BrowserRouter>
-  </React.StrictMode>,
-  document.getElementById('root')
+            </Routes>
+        </BrowserRouter>
+    </React.StrictMode>,
+    document.getElementById('root')
 );
 
 // If you want to start measuring performance in your app, pass a function
