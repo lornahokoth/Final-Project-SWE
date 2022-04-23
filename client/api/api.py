@@ -103,7 +103,7 @@ def add_new_item():
     data = flask.request.get_json(force=True)
     list_id = data["list_id"]
     media_id = data["media_id"]
-    my_item = ListItems.addListItem(list_id, media_id)
+    my_item = ListItems.addListItem(list_id, str(media_id))
     return jsonify(my_item)
 
 
@@ -136,7 +136,7 @@ def get_movie_details():
 def get_tv_details():
     data = flask.request.get_json(force=True)
     id = data["media_id"]
-    tv_details = get_tv_detail(id)
+    tv_details = get_tv_detail(str(id))
 
     return tv_details
 
