@@ -7,7 +7,7 @@ from flask import Flask, jsonify
 from imdb import search_movies, get_trending_movies, get_movie_detail
 from tmdb import get_trending, search_tv, get_tv_detail
 from books import search_books, get_book_detail
-from wiki import get_best_sellers
+from nytimes import get_best_sellers
 from dbs import Lists, ListItems, db
 
 app = Flask(__name__)
