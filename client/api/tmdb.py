@@ -5,7 +5,6 @@ from dotenv import find_dotenv, load_dotenv
 
 load_dotenv(find_dotenv())
 BASE_URL = "https://api.themoviedb.org/3/search/tv"
-# BASE_URL1 = "https://api.themoviedb.org/3/tv/popular"
 BASE_URL1 = "https://api.themoviedb.org/3/trending/tv/day"
 BASE_URL2 = "https://api.themoviedb.org/3/tv"
 PIC_URL = "https://image.tmdb.org/t/p/w200"
