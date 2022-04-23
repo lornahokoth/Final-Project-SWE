@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import ListContent from './ListContent'
 import ResultCard from './ResultCard'
 import './List.css'
@@ -20,7 +20,7 @@ export default function List({ onAddItem, onDeleteList, onDeleteItem, listId, li
         setNewItemName(query);
         if (query.length > 3) {
             var postData = { query: event.target.value };
-            if (listType == "Movie") {
+            if (listType === "Movie") {
                 fetch('/search', {
                     method: 'POST',
                     headers: {
@@ -50,7 +50,7 @@ export default function List({ onAddItem, onDeleteList, onDeleteItem, listId, li
                         }
                     }
                 )
-            } else if (listType == "TV") {
+            } else if (listType === "TV") {
                 fetch('/search1', {
                     method: 'POST',
                     headers: {
@@ -77,7 +77,7 @@ export default function List({ onAddItem, onDeleteList, onDeleteItem, listId, li
                         setResults([...resultList]);
                     }
                 )
-            } else if (listType == "Book") {
+            } else if (listType === "Book") {
                 fetch('/search2', {
                     method: 'POST',
                     headers: {
@@ -114,7 +114,7 @@ export default function List({ onAddItem, onDeleteList, onDeleteItem, listId, li
     }
 
     function addItemHandle() {
-        if (newItemName == '' || newMediaId == '') {
+        if (newItemName === '' || newMediaId === '') {
             alert("Please select an item from the dropdown before adding");
             return;
         }

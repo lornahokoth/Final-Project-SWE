@@ -14,11 +14,11 @@ export default function MyLists({ onDeleteItem, itemId, media_id, media_type }) 
 
     useEffect(() => {
         var url;
-        if (media_type == "Movie") {
+        if (media_type === "Movie") {
             url = "/getMovieDetails";
-        } else if (media_type == "TV") {
+        } else if (media_type === "TV") {
             url = "/getTVDetails";
-        } else if (media_type == "Book") {
+        } else if (media_type === "Book") {
             url = "/getBookDetails";
         }
         const postData = { "media_id": media_id };
@@ -32,23 +32,23 @@ export default function MyLists({ onDeleteItem, itemId, media_id, media_type }) 
             res => res.json()
         ).then(
             data => {
-                if (media_type == "Movie") {
+                if (media_type === "Movie") {
                     setMediaName(data.title)
                     setThumbnail(data.image)
-                } else if (media_type == "TV") {
+                } else if (media_type === "TV") {
                     setMediaName(data.name)
                     setThumbnail("https://image.tmdb.org/t/p/w200" + data.poster_path)
-                } else if (media_type == "Book") {
+                } else if (media_type === "Book") {
                     setMediaName(data.volumeInfo.title)
                     setThumbnail(data.volumeInfo.imageLinks.thumbnail)
                 }
             }
         )
-    }, [])
+    }, [media_id, media_type])
 
     return (
         <div className="listItem">
-            <img className="image" src={thumbnail}></img>
+            <img className="image" src={thumbnail} alt={media_name}></img>
             <b className="title">{media_name}</b>
             <div className="delete">
                 <button onClick={deleteItemHandle}><FontAwesomeIcon icon={faTrash} /></button>

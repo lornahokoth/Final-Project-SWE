@@ -1,14 +1,14 @@
 import React, { useState, useEffect } from 'react'
 import { Link } from "react-router-dom";
 import Searchbar from '../SearchBar';
-import './profile.css';
+import '../profile.css';
 
 import { useRef } from 'react';
-import { useAuth } from './firebase';
-import { signup } from "./firebase";
-import { logout } from './firebase';
-import { login } from './firebase';
-import { upload } from './firebase';
+import { useAuth } from '../firebase';
+import { signup } from "../firebase";
+import { logout } from '../firebase';
+import { login } from '../firebase';
+import { upload } from '../firebase';
 
 
 export default function Profile() {
